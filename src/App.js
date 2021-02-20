@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import NewTaskForm from './components/NewTaskForm/NewTaskForm';
 import TaskList from './components/TaskList/TaskList';
@@ -49,20 +50,12 @@ export default class App extends React.Component{
   
   onToggleDone = (id) => {
     this.setState (({todoData}) => {
-      const idx = todoData.findIndex((el) => el.id === id);
 
-      const oldItem = todoData[idx];
-      const newItem = {...oldItem,
-                       done:!oldItem.done};
-         
-      const newData = [
-        ...todoData.slice(0, idx),
-        newItem,
-        ...todoData.slice(idx +1)
-      ];  
+      const newData = todoData.map((el) =>  el.id === id ? {...el, done:!el.done} : el);  
+
       return {
-        todoData:newData
-      }               
+       todoData: newData
+      }
     })
   }
 
@@ -93,11 +86,8 @@ export default class App extends React.Component{
 
   deleteTask = (id) => {
     this.setState(({todoData}) => {
-      const idx = todoData.findIndex((el) => el.id === id);
-      const newData = [
-        ...todoData.slice(0, idx),
-        ...todoData.slice(idx +1)
-      ];
+      const newData = todoData.filter((el) => el.id !== id);
+      
       return {
         todoData: newData
       }

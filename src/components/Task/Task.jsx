@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import './Task.css';
 import PropTypes from 'prop-types';
@@ -12,7 +10,6 @@ const Task = ({
   if (done) {
     classNames += 'completed ';
   }
-  // const createDate = new Date();
   const result = formatDistanceToNow(
     new Date(date),
   );
@@ -36,11 +33,13 @@ const Task = ({
       <button
         type="button"
         className="icon icon-edit"
+        aria-label="Save"
       />
       <button
         type="button"
         className="icon icon-destroy"
         onClick={onDeleted}
+        aria-label="Save"
       />
     </div>
   );

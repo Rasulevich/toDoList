@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import TasksFilter from '../TasksFilter/TasksFilter';
@@ -6,7 +5,7 @@ import './Footer.css';
 import '../main.css';
 
 const Footer = ({
-    toDoCount, showActiveTasks, showCompleteTasks, showAllTasks, clearCompleted,
+    toDoCount, showActiveTasks, showCompleteTasks, showAllTasks, clearCompleted,filter
 }) => (
   <section className="main">
     <footer className="footer">
@@ -19,6 +18,7 @@ const Footer = ({
         showActiveTasks={showActiveTasks}
         showCompleteTasks={showCompleteTasks}
         showAllTasks={showAllTasks}
+        filter={filter}
       />
       <button
         type="button"
@@ -34,6 +34,11 @@ const Footer = ({
 Footer.defaultProps = {
     clearCompleted: () => { },
     toDoCount: 0,
+    showActiveTasks: () => { },
+    showCompleteTasks: () => { },
+    showAllTasks: () => { },
+
+
 };
 Footer.propTypes = {
     toDoCount: PropTypes.number,

@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
  import React from 'react';
  import PropTypes from 'prop-types';
  import './NewTaskForm.css';
@@ -25,14 +24,18 @@
   }
 
   onSubmit = (event) => {
+          const {addTask} = this.props;
+          const {label} = this.state;
+
           event.preventDefault();
-          this.props.addTask(this.state.label);
+          addTask(label);
           this.setState ({
                   label:''
           })
   }
 
   render () {
+        const {label} = this.state;
         return (
                 <header className="header">
                         <h1>todos</h1>
@@ -40,7 +43,7 @@
                           <input className="new-todo" 
                                   placeholder="What needs to be done?" 
                                   onChange = {this.onLabelChange}
-                                  value = {this.state.label}/>
+                                  value = {label}/>
                          </form> 
                   </header>
           )
